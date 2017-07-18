@@ -1,3 +1,4 @@
+import math
 
 def main():
 
@@ -13,9 +14,9 @@ def main():
         else:
             resultados.append("Not Prime")
 
-    imprime(resultados)
+    imprimeLista(resultados)
 
-def imprime(resultados):
+def imprimeLista(resultados):
 
     for i in resultados:
         print("%s" % i)
@@ -23,11 +24,18 @@ def imprime(resultados):
 
 def isPrime(numero):
 
-    counter = 3
+    if numero == 0 or numero == 1:
+        return False
+
+    if numero == 2:
+        return True
+
     i = 2
+    temp = math.sqrt(numero) + 1
+
     while(True):
 
-        if (counter/float(numero) >= 0.30):
+        if (i > temp):
 
             return True
         if (numero % i == 0):
@@ -35,8 +43,6 @@ def isPrime(numero):
             return False
 
         i += 1
-        counter += 1
-
 
 
 if __name__ == '__main__':
