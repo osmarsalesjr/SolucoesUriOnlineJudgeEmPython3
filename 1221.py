@@ -8,7 +8,7 @@ def main():
 
         numero = int(input())
 
-        if (isPrime(3, numero, int(numero/2))):
+        if (isPrime(numero)):
             resultados.append("Prime")
         else:
             resultados.append("Not Prime")
@@ -20,15 +20,23 @@ def imprime(resultados):
     for i in resultados:
         print("%s" % i)
 
-def isPrime(i, numero, temp):
 
-    if temp <= 2:
-        return True
+def isPrime(numero):
 
-    elif numero % i == 0:
-        return False
-    else:
-        return isPrime(i + 1, numero, int(temp/2))
+    counter = 3
+    i = 2
+    while(True):
+
+        if (counter/float(numero) >= 0.30):
+
+            return True
+        if (numero % i == 0):
+
+            return False
+
+        i += 1
+        counter += 1
+
 
 
 if __name__ == '__main__':
