@@ -46,9 +46,12 @@ def reformularMatriz(matriz, numero):
 
 
 def imprimir(matrizes):
-    for i in range(len(matrizes)):
-        for j in range(len(matrizes[i])):
-            print(("  ") + "   ".join([str(z) for z in matrizes[i][j]]))
+    for matriz in matrizes:
+        for i in range(len(matriz)):
+            print("%3d" % matriz[i][0], end="")
+            for j in range(1, len(matriz[i])):
+                print("%4d" % matriz[i][j], end="")
+            print("")
         print("")
 
 
