@@ -1,53 +1,52 @@
+##Thanks to Leo for suport
+
 def main():
 
 
     numeroDeMedidas = int(input())
     medidas = [int(i) for i in input().split()]
 
-    lista = []
+    resultado = -1
+    if (numeroDeMedidas < 2):
 
-    if (medidas[0] > medidas[1]):
-
-        lista.append(1)
-        lista.append(0)
-        resultado = verificaMedidas(lista, medidas)
-    elif (medidas[0] > medidas[1]):
-
-        lista.append(0)
-        lista.append(1)
-        resultado = verificaMedidas(lista, medidas)
+        print(1)
     else:
 
-        resultado = 0
+        temp = medidas[1]
+        if (medidas[0] > medidas[1]):
 
-    print("%d" % resultado)
+            for i in range(2, len(medidas)):
+                if(i % 2 == 0):
+                    if (temp < medidas[i]):
+                        temp = medidas[i]
+                    else:
+                        resultado = 0
+                else:
+                    if (temp > medidas[i]):
+                        temp = medidas[i]
+                    else:
+                        resultado = 0
+        elif(medidas[0] == medidas[1]):
 
-
-def verificaMedidas(lista, medidas):
-
-    for i in range(2, len(medidas)):
-
-        if (medidas[i] > medidas[i - 1]):
-
-            lista.append(1)
+            resultado = 0
         else:
 
-            lista.append(0)
+            for i in range(2, len(medidas)):
+                if (i % 2 != 0):
+                    if (temp < medidas[i]):
+                        temp = medidas[i]
+                    else:
+                        resultado = 0
+                else:
+                    if (temp > medidas[i]):
+                        temp = medidas[i]
+                    else:
+                        resultado = 0
 
-    temp = lista[0]
-
-    for i in range(1, len(lista)):
-
-        if (lista[i] == 1 and temp != 0):
-
-            return 0
-        elif (lista[i] == 0 and temp != 1):
-
-            return 0
-        else:
-            temp = lista[i]
-
-    return 1
+    if(resultado == -1):
+        print(1)
+    else:
+        print(0)
 
 
 if __name__ == '__main__':

@@ -1,47 +1,51 @@
+##Thanks to Leo for suport
 
 def main():
-
-    results = list()
+    resultsLists = list()
     while True:
 
         nWords = int(input())
-        
+
         if (nWords <= 0):
 
-            results.pop()
             break
         else:
 
             words = list()
-
             for i in range(nWords):
-
                 word = input()
-                words.append(word.upper())
-            
-            size_max = len(sorted(words, key = len).pop())
+                words.append(word)
 
-            for word in words:
+            lastWord = sorted(words, key=len).pop()
+            size_max = len(lastWord)
 
-                sizeWord = size_max - len(word)
-                spaces = ""
+            temp = list()
+            size = len(words)
+            for i in range(size):
 
-                for i in range(sizeWord):
-                    spaces += " "
+                spaces = (size_max - len(words[i])) * " "
+                if (i == size - 1):
+                    newString = "%s%s\n" % (spaces, words[i])
+                else:
+                    newString = "%s%s" % (spaces, words[i])
+                temp.append(newString)
+            resultsLists.append(temp)
 
-                results.append(spaces + word)
+    lastPosition = temp[-1]
+    lenght = len(temp) - 1
+    newStringTemp = ""
 
-            results.append("")
+    for i in range(len(lastPosition) - 1):
+        newStringTemp += lastPosition[i]
+    temp[lenght] = newStringTemp
+
+    listar(resultsLists)
 
 
-    listar(results)
-
-
-def listar(lista):
-
-    for i in lista:
-
-        print(i)
+def listar(listas):
+    for i in range(len(listas)):
+        for j in range(len(listas[i])):
+            print(listas[i][j])
 
 
 if __name__ == "__main__":
