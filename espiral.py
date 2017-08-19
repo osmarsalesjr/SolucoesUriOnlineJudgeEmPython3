@@ -1,24 +1,78 @@
+from time import time
 
 def main():
-    
-    medida, numero = [int(i) for i in input().split()]
-    
-    matriz = []
-    valores = 1
-    indices = ""
-    
-    for i in range(medida):
-        lista = range(valores, valores + medida)
-        matriz.append(lista)
-        
-        valores += medida
-    
-    for i in range(medida):
-       if numero in matriz[i]:
-            j = matriz[i].index(numero)
-            print("%d %d" % (j, i))
+
+    dimensaoMatriz, ultimoFeijao = [int(i) for i in input().split()]
+    contador = 0
+    temp = 0
+    limite = dimensaoMatriz
+    limiteLateralEsquerda = -1
+    encontrado = False
+
+    inicio = time()
+    while(True):
+
+        if (encontrado):
             break
-    
+        print("\nContador:",contador)
+        print("1º For")
+        for i in range(temp, temp + 1):
+            for j in range(temp, limite):
+                contador += 1
+                if (contador >= ultimoFeijao):
+                    indexI = i
+                    indexJ = j
+                    encontrado = True
+                    break
+
+            if(encontrado):
+                break
+        if (encontrado):
+            break
+        print("2º For")
+        for i in range(temp + 1, limite):
+            for j in range(limite - 1, limite - 2, - 1):
+                contador += 1
+                if (contador >= ultimoFeijao):
+                    indexI = i
+                    indexJ = j
+                    encontrado = True
+                    break
+            if (encontrado):
+                break
+
+        if (encontrado):
+            break
+        print("3º For")
+        limite -= 1
+        for i in range(limite, limite - 1, -1):
+            for j in range(limite - 1, limiteLateralEsquerda, -1):
+                contador += 1
+                if (contador >= ultimoFeijao):
+                    indexI = i
+                    indexJ = j
+                    encontrado = True
+                    break
+            if (encontrado):
+                break
+        if (encontrado):
+            break
+        print("4º For")
+        limiteLateralEsquerda += 1
+        for i in range(limite - 1, temp, -1):
+            for j in range(temp, temp + 1):
+                contador += 1
+                if (contador >= ultimoFeijao):
+                    indexI = i
+                    indexJ = j
+                    encontrado = True
+                    break
+            if (encontrado):
+                break
+        temp += 1
+    fim = time()
+    print("%d %d" % (indexI + 1, indexJ + 1))
+    print("Tempo de Execucao:", (fim - inicio))
 
 
 
