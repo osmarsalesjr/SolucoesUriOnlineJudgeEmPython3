@@ -3,6 +3,7 @@ from time import time
 def main():
 
     dimensaoMatriz, ultimoFeijao = [int(i) for i in input().split()]
+
     contador = 0
     temp = 0
     limite = dimensaoMatriz
@@ -24,6 +25,7 @@ def main():
                     indexJ = j
                     encontrado = True
                     break
+                ##contador += 1
 
             if(encontrado):
                 break
@@ -38,6 +40,7 @@ def main():
                     indexJ = j
                     encontrado = True
                     break
+                ##contador += 1
             if (encontrado):
                 break
 
@@ -53,12 +56,12 @@ def main():
                     indexJ = j
                     encontrado = True
                     break
+                ##contador += 1
             if (encontrado):
                 break
         if (encontrado):
             break
         print("4º For")
-        limiteLateralEsquerda += 1
         for i in range(limite - 1, temp, -1):
             for j in range(temp, temp + 1):
                 contador += 1
@@ -67,8 +70,10 @@ def main():
                     indexJ = j
                     encontrado = True
                     break
+                ##contador += 1
             if (encontrado):
                 break
+        limiteLateralEsquerda += 1
         temp += 1
     fim = time()
     print("%d %d" % (indexI + 1, indexJ + 1))
