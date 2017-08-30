@@ -11,7 +11,7 @@ def main():
             break
         media = tempo/90.0
         alemanha = math.ceil(media * 7.0)
-        brasil = round(media * 1.0)
+        brasil = int(media * 1.0)
         listaDeDicionarios.append({"a": alemanha, "b": brasil})
 
     for dicionario in listaDeDicionarios:
